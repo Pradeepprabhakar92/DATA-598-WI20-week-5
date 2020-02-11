@@ -1,0 +1,51 @@
+---
+title: "My vignette file"
+output: 
+    bookdown::html_document2:
+      base_format: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{My-vignette-file}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: barba2018.bib
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 5,
+  fig.retina = 2,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(mysimplecompedium)
+```
+
+
+```{r, starwars-plot,fig.cap = "A ggplot of starwars stuff"}
+library(tidyverse)
+library(here)
+
+starwars %>%
+  filter(species == "Human")%>% ggplot()+aes(x=height,y=mass)+geom_point()
+```
+
+We can see in Figure \@ref(fig:starwars-plot) a linear relationship between the height and mass of the starwars characters.
+
+Using the R-script:
+```{r}
+source(here("vignettes/starwars.R"))
+summary(Filter(is.numeric,starwars))
+```
+
+
+[@barba2018terminologies] in the article "Terminologies for reproducible research" attempts to inventory the contradictory definitions for reproducibility vs replicability across various disciplines
+
+## References cited
+
+
+
